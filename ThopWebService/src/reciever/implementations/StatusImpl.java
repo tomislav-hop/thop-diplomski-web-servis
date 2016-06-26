@@ -24,7 +24,7 @@ public class StatusImpl implements StatusInterface {
 		mySQL.addStatus(s);
 		mySQL.closeDatabaseConnection();
 
-		return null;
+		return "Recieved: " + json;
 	}
 
 	@Override
