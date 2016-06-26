@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import databaseConnection.objects.DbItemImpl;
+import databaseConnection.objects.DbPackageImpl;
 import databaseConnection.objects.DbStatusImpl;
 import gsonObjects.Item;
 import gsonObjects.Status;
@@ -97,5 +98,20 @@ public class MySQLConnectionHelper {
 
 	public Status getStatus(String statusId) {
 		return new DbStatusImpl().getStatus(statusId, conn);
+	}
+
+	//================================================================================
+	// Package methods
+	//================================================================================
+	public String addPackage(gsonObjects.Package itemPackage) {
+		return new DbPackageImpl().addPackage(itemPackage, conn);
+	}
+
+	public List<gsonObjects.Package> getAllPackages() {
+		return new DbPackageImpl().getAllPackages(conn);
+	}
+
+	public gsonObjects.Package getPackage(String packageId) {
+		return new DbPackageImpl().getPackage(packageId, conn);
 	}
 }

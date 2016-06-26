@@ -19,7 +19,7 @@ public interface PackageInterface {
 	@Path("get")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public String getPackage(@QueryParam("packageId") String PackageId);
+	public String getPackage(@QueryParam("packageId") String packageId);
 
 	@GET
 	@Path("getAll")
