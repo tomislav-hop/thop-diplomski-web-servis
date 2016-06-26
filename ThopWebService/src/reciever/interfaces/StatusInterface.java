@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-@Path("item")
+@Path("status")
 public interface StatusInterface {
 
 	@POST
@@ -19,7 +19,7 @@ public interface StatusInterface {
 	@Path("get")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public String getStatus(@QueryParam("StatusId") String StatusId);
+	public String getStatus(@QueryParam("statusId") String StatusId);
 
 	@GET
 	@Path("getAll")

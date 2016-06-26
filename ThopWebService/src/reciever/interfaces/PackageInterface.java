@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-@Path("item")
+@Path("package")
 public interface PackageInterface {
 
 	@POST
@@ -19,7 +19,7 @@ public interface PackageInterface {
 	@Path("get")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public String getPackage(@QueryParam("PackageId") String PackageId);
+	public String getPackage(@QueryParam("packageId") String PackageId);
 
 	@GET
 	@Path("getAll")

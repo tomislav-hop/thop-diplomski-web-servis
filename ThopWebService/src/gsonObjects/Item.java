@@ -1,13 +1,13 @@
 package gsonObjects;
 
-public class ItemGson {
+public class Item {
 
 	private Integer itemId;
 	private String itemName;
 	private String itemDescription;
 	private Double itemTimePerKg;
 
-	public ItemGson(Integer itemId, String itemName, String itemDescription, Double itemTimePerKg) {
+	public Item(Integer itemId, String itemName, String itemDescription, Double itemTimePerKg) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;

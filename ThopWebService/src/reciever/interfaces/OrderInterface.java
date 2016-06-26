@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-@Path("item")
+@Path("order")
 public interface OrderInterface {
 
 	@POST
@@ -19,7 +19,7 @@ public interface OrderInterface {
 	@Path("get")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public String getOrder(@QueryParam("OrderId") String PackageId);
+	public String getOrder(@QueryParam("orderId") String PackageId);
 
 	@GET
 	@Path("getAll")

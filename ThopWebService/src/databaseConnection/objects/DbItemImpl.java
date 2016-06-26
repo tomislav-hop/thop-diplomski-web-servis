@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import gsonObjects.ItemGson;
+import gsonObjects.Item;
 
 public class DbItemImpl {
 
-	public String addItem(ItemGson item, Connection conn) {
+	public String addItem(Item item, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
 			String sql = "INSERT INTO artikl VALUES (NULL, '" + item.getItemName() + "', '" + item.getItemDescription() + "', '" + item.getItemTimePerKg() + "');";
@@ -27,15 +27,15 @@ public class DbItemImpl {
 		}
 	}
 
-	public List<ItemGson> getAllItems(Connection conn) {
+	public List<Item> getAllItems(Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
 			String sql = "SELECT * FROM artikl;";
 			System.out.println("SQL: " + sql);
 			ResultSet rs = stmt.executeQuery(sql);
-			List<ItemGson> listOfItems = new ArrayList<>();
+			List<Item> listOfItems = new ArrayList<>();
 			while (rs.next()) {
-				listOfItems.add(new ItemGson(rs.getInt("id_artikl"), rs.getString("naziv"), rs.getString("opis"), rs.getDouble("vrijeme_po_kg")));
+				listOfItems.add(new Item(rs.getInt("id_artikl"), rs.getString("naziv"), rs.getString("opis"), rs.getDouble("vrijeme_po_kg")));
 			}
 			return listOfItems;
 		} catch (SQLException e) {
@@ -44,14 +44,14 @@ public class DbItemImpl {
 		}
 	}
 
-	public ItemGson getItem(String itemId, Connection conn) {
+	public Item getItem(String itemId, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
 			String sql = "SELECT * FROM artikl WHERE id_artikl = " + itemId + ";";
 			ResultSet rs = stmt.executeQuery(sql);
-			ItemGson returnItem = null;
+			Item returnItem = null;
 			while (rs.next()) {
-				returnItem = new ItemGson(rs.getInt("id_artikl"), rs.getString("naziv"), rs.getString("opis"), rs.getDouble("vrijeme_po_kg"));
+				returnItem = new Item(rs.getInt("id_artikl"), rs.getString("naziv"), rs.getString("opis"), rs.getDouble("vrijeme_po_kg"));
 			}
 			return returnItem;
 		} catch (SQLException e) {

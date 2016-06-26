@@ -10,7 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import databaseConnection.objects.DbItemImpl;
-import gsonObjects.ItemGson;
+import databaseConnection.objects.DbStatusImpl;
+import gsonObjects.Item;
+import gsonObjects.Status;
 
 public class MySQLConnectionHelper {
 
@@ -24,6 +26,9 @@ public class MySQLConnectionHelper {
 
 	private Connection conn = null;
 
+	//================================================================================
+	// Database configuration and connections
+	//================================================================================
 	private void loadWebServiceProperties() {
 		Properties prop = new Properties();
 
@@ -64,15 +69,33 @@ public class MySQLConnectionHelper {
 		}
 	}
 
-	public String addItem(ItemGson item) {
+	//================================================================================
+	// Item methods
+	//================================================================================
+	public String addItem(Item item) {
 		return new DbItemImpl().addItem(item, conn);
 	}
 
-	public List<ItemGson> getAllItems() {
+	public List<Item> getAllItems() {
 		return new DbItemImpl().getAllItems(conn);
 	}
-	
-	public ItemGson getItem(String itemId){
+
+	public Item getItem(String itemId) {
 		return new DbItemImpl().getItem(itemId, conn);
+	}
+
+	//================================================================================
+	// Status methods
+	//================================================================================
+	public String addStatus(Status status) {
+		return new DbStatusImpl().addStatus(status, conn);
+	}
+
+	public List<Status> getAllStatuses() {
+		return new DbStatusImpl().getAllStatuses(conn);
+	}
+
+	public Status getStatus(String statusId) {
+		return new DbStatusImpl().getStatus(statusId, conn);
 	}
 }
