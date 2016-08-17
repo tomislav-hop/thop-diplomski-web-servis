@@ -19,7 +19,7 @@ public interface OrderInterface {
 	@Path("get")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public String getOrder(@QueryParam("orderId") String PackageId);
+	public String getOrder(@QueryParam("orderId") String orderId);
 
 	@GET
 	@Path("getAll")

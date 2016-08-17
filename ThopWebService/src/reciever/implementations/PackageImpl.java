@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import databaseConnection.MySQLConnectionHelper;
-import gsonObjects.Item;
 import gsonObjects.Package;
 import reciever.interfaces.PackageInterface;
 

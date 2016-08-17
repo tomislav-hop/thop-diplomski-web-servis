@@ -7,17 +7,15 @@ public class Order {
 	private String orderAdress;
 	private String orderDate;
 	private String additionalNotes;
-	private int orderItemsId;
 	private int statusId;
 
-	public Order(int orderId, String orderOrdered, String orderAdress, String orderDate, String additionalNotes, int orderItemsId, int statusId) {
+	public Order(int orderId, String orderOrdered, String orderAdress, String orderDate, String additionalNotes, int statusId) {
 		super();
 		this.orderId = orderId;
 		this.orderOrdered = orderOrdered;
 		this.orderAdress = orderAdress;
 		this.orderDate = orderDate;
 		this.additionalNotes = additionalNotes;
-		this.orderItemsId = orderItemsId;
 		this.statusId = statusId;
 	}
 
@@ -59,14 +57,6 @@ public class Order {
 
 	public void setAdditionalNotes(String additionalNotes) {
 		this.additionalNotes = additionalNotes;
-	}
-
-	public int getOrderItemsId() {
-		return orderItemsId;
-	}
-
-	public void setOrderItemsId(int orderItemsId) {
-		this.orderItemsId = orderItemsId;
 	}
 
 	public int getStatusId() {
