@@ -35,7 +35,7 @@ public class DbStatusImpl {
 			ResultSet rs = stmt.executeQuery(sql);
 			List<Status> listOfStatuses = new ArrayList<>();
 			while (rs.next()) {
-				listOfStatuses.add(new Status(rs.getInt("id_status"), rs.getString("naziv"), rs.getString("opis")));
+				listOfStatuses.add(new Status(rs.getInt("id_status"), rs.getString("name"), rs.getString("desc")));
 			}
 			return listOfStatuses;
 		} catch (SQLException e) {
@@ -51,7 +51,7 @@ public class DbStatusImpl {
 			ResultSet rs = stmt.executeQuery(sql);
 			Status returnStatus = null;
 			while (rs.next()) {
-				returnStatus = new Status(rs.getInt("id_status"), rs.getString("naziv"), rs.getString("opis"));
+				returnStatus = new Status(rs.getInt("id_status"), rs.getString("name"), rs.getString("desc"));
 			}
 			return returnStatus;
 		} catch (SQLException e) {

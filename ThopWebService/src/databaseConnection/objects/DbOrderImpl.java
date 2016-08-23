@@ -17,7 +17,7 @@ public class DbOrderImpl {
 
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "INSERT INTO narudzba VALUES (NULL, '" + order.getOrderOrdered() + "', '" + order.getOrderAdress() + "', '" + order.getOrderDate() + "', '" + order.getAdditionalNotes() + "', '1', '" + order.getStatusId() + "');";
+			String sql = "INSERT INTO `order` VALUES (NULL, '" + order.getOrderOrdered() + "', '" + order.getOrderAdress() + "', '" + order.getOrderDate() + "', '" + order.getAdditionalNotes() + "', '" + order.getStatusId() + "');";
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql);
 			System.out.println("Order successfully added.");
@@ -31,11 +31,12 @@ public class DbOrderImpl {
 	public Order getOrder(String orderId, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM narudzba WHERE id_narudzba = " + orderId + ";";
+			String sql = "SELECT * FROM `order` WHERE id_order = " + orderId + ";";
+			System.out.println("SQL:" + sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			Order returnOrder = null;
 			while (rs.next()) {
-				return returnOrder = new Order(rs.getInt("id_narudzba"), rs.getString("narucio"), rs.getString("adresa"), rs.getString("datum_narudzbe"), rs.getString("dodatne_biljeske"), rs.getInt("status_id_status"));
+				return returnOrder = new Order(rs.getInt("id_order"), rs.getString("orderedBy"), rs.getString("adress"), rs.getString("orderDate"), rs.getString("additionalNotes"), rs.getInt("id_status"));
 			}
 			return returnOrder;
 		} catch (SQLException e) {
@@ -47,12 +48,12 @@ public class DbOrderImpl {
 	public List<Order> getAllOrders(Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM narudzba;";
+			String sql = "SELECT * FROM `order`;";
 			System.out.println("SQL: " + sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			List<Order> listOfOrders = new ArrayList<>();
 			while (rs.next()) {
-				listOfOrders.add(new Order(rs.getInt("id_narudzba"), rs.getString("narucio"), rs.getString("adresa"), rs.getString("datum_narudzbe"), rs.getString("dodatne_biljeske"), rs.getInt("status_id_status")));
+				listOfOrders.add(new Order(rs.getInt("id_order"), rs.getString("orderedBy"), rs.getString("adress"), rs.getString("orderDate"), rs.getString("additionalNotes"), rs.getInt("id_status")));
 			}
 			return listOfOrders;
 		} catch (SQLException e) {

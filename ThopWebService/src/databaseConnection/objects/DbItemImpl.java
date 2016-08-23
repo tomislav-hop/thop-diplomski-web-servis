@@ -16,7 +16,7 @@ public class DbItemImpl {
 	public String addItem(Item item, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "INSERT INTO artikl VALUES (NULL, '" + item.getItemName() + "', '" + item.getItemDescription() + "', '" + item.getItemTimePerKg() + "');";
+			String sql = "INSERT INTO item VALUES (NULL, '" + item.getItemName() + "', '" + item.getItemDescription() + "', '" + item.getItemTimePerKg() + "');";
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql);
 			System.out.println("Item successfully added.");
@@ -30,12 +30,12 @@ public class DbItemImpl {
 	public List<Item> getAllItems(Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM artikl;";
+			String sql = "SELECT * FROM item;";
 			System.out.println("SQL: " + sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			List<Item> listOfItems = new ArrayList<>();
 			while (rs.next()) {
-				listOfItems.add(new Item(rs.getInt("id_artikl"), rs.getString("naziv"), rs.getString("opis"), rs.getDouble("vrijeme_po_kg")));
+				listOfItems.add(new Item(rs.getInt("id_item"), rs.getString("name"), rs.getString("desc"), rs.getDouble("timePerKg")));
 			}
 			return listOfItems;
 		} catch (SQLException e) {
@@ -47,11 +47,11 @@ public class DbItemImpl {
 	public Item getItem(String itemId, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM artikl WHERE id_artikl = " + itemId + ";";
+			String sql = "SELECT * FROM item WHERE id_item = " + itemId + ";";
 			ResultSet rs = stmt.executeQuery(sql);
 			Item returnItem = null;
 			while (rs.next()) {
-				returnItem = new Item(rs.getInt("id_artikl"), rs.getString("naziv"), rs.getString("opis"), rs.getDouble("vrijeme_po_kg"));
+				returnItem = new Item(rs.getInt("id_item"), rs.getString("name"), rs.getString("desc"), rs.getDouble("timePerKg"));
 			}
 			return returnItem;
 		} catch (SQLException e) {

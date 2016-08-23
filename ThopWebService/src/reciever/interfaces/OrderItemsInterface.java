@@ -19,10 +19,10 @@ public interface OrderItemsInterface {
 	@Path("get")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public String getOrderItems(@QueryParam("orderItemsId") String OrderItemsId);
+	public String getOrderItem(@QueryParam("orderItemId") String OrderItemId);
 
 	@GET
 	@Path("getAll")
 	@Produces("application/json")
-	public String getAllOrderItems();
+	public String getAllOrderItems(String orderId);
 }

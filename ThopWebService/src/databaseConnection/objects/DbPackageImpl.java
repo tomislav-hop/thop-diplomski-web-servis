@@ -15,7 +15,7 @@ public class DbPackageImpl {
 	public String addPackage(Package Package, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "INSERT INTO pakovanje VALUES (NULL, '" + Package.getPackageName() + "', '" + Package.getPackageDescription() + "');";
+			String sql = "INSERT INTO package VALUES (NULL, '" + Package.getPackageName() + "', '" + Package.getPackageDescription() + "');";
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql);
 			System.out.println("Package successfully added.");
@@ -29,12 +29,12 @@ public class DbPackageImpl {
 	public List<Package> getAllPackages(Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM pakovanje;";
+			String sql = "SELECT * FROM package;";
 			System.out.println("SQL: " + sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			List<Package> listOfPackages = new ArrayList<>();
 			while (rs.next()) {
-				listOfPackages.add(new Package(rs.getInt("id_pakovanje"), rs.getString("naziv"), rs.getString("opis")));
+				listOfPackages.add(new Package(rs.getInt("id_package"), rs.getString("name"), rs.getString("desc")));
 			}
 			return listOfPackages;
 		} catch (SQLException e) {
@@ -46,11 +46,11 @@ public class DbPackageImpl {
 	public Package getPackage(String PackageId, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM pakovanje WHERE id_pakovanje = " + PackageId + ";";
+			String sql = "SELECT * FROM package WHERE id_package = " + PackageId + ";";
 			ResultSet rs = stmt.executeQuery(sql);
 			Package returnPackage = null;
 			while (rs.next()) {
-				returnPackage = new Package(rs.getInt("id_pakovanje"), rs.getString("naziv"), rs.getString("opis"));
+				returnPackage = new Package(rs.getInt("id_package"), rs.getString("name"), rs.getString("desc"));
 			}
 			return returnPackage;
 		} catch (SQLException e) {
