@@ -1,111 +1,114 @@
 package gsonObjects;
 
 public class OrderItems {
-	private int orderItemId;
-	private int itemId;
-	private String orderItemEndDate;
-	private double orderItemweight;
-	private String orderItemStartDate;
-	private boolean orderItemDelivery;
-	private boolean orderItemCool;
-	private boolean orderItemChop;
-	private int orderItemPackage;
-	private String orderItemAdditionalNotes;
+
+	private int id_orderItems;
+	private int id_item;
+	private String deadline;
+	private double weight;
+	private String startTime;
+	private int delivery;
+	private int cool;
+	private int cut;
+	private int id_package;
+	private String additionalNotes;
 	private String deliveryTime;
+	private int id_order;
 
-	public OrderItems(int orderItemId, int itemId, String orderItemEndDate, double orderItemweight, String orderItemStartDate, boolean orderItemDelivery, boolean orderItemCool, boolean orderItemChop, int orderItemPackage, String orderItemAdditionalNotes, String deliveryTime) {
+	public OrderItems(int id_orderItems, int id_item, String deadline, double weight, String startTime, int delivery, int cool, int cut, int id_package, String additionalNotes, String deliveryTime, int id_order) {
 		super();
-		this.orderItemId = orderItemId;
-		this.itemId = itemId;
-		this.orderItemEndDate = orderItemEndDate;
-		this.orderItemweight = orderItemweight;
-		this.orderItemStartDate = orderItemStartDate;
-		this.orderItemDelivery = orderItemDelivery;
-		this.orderItemCool = orderItemCool;
-		this.orderItemChop = orderItemChop;
-		this.orderItemPackage = orderItemPackage;
-		this.orderItemAdditionalNotes = orderItemAdditionalNotes;
+		this.id_orderItems = id_orderItems;
+		this.id_item = id_item;
+		this.deadline = deadline;
+		this.weight = weight;
+		this.startTime = startTime;
+		this.delivery = delivery;
+		this.cool = cool;
+		this.cut = cut;
+		this.id_package = id_package;
+		this.additionalNotes = additionalNotes;
 		this.deliveryTime = deliveryTime;
+		this.id_order = id_order;
 	}
 
-	public int getOrderItemId() {
-		return orderItemId;
+	public int getId_orderItems() {
+		return id_orderItems;
 	}
 
-	public void setOrderItemId(int orderItemId) {
-		this.orderItemId = orderItemId;
+	public void setId_orderItems(int id_orderItems) {
+		this.id_orderItems = id_orderItems;
 	}
 
-	public int getItemId() {
-		return itemId;
+	public int getId_item() {
+		return id_item;
 	}
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setId_item(int id_item) {
+		this.id_item = id_item;
 	}
 
-	public String getOrderItemEndDate() {
-		return orderItemEndDate;
+	public String getDeadline() {
+		return deadline;
 	}
 
-	public void setOrderItemEndDate(String orderItemEndDate) {
-		this.orderItemEndDate = orderItemEndDate;
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
 	}
 
-	public double getOrderItemweight() {
-		return orderItemweight;
+	public double getWeight() {
+		return weight;
 	}
 
-	public void setOrderItemweight(double orderItemweight) {
-		this.orderItemweight = orderItemweight;
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
-	public String getOrderItemStartDate() {
-		return orderItemStartDate;
+	public String getStartTime() {
+		return startTime;
 	}
 
-	public void setOrderItemStartDate(String orderItemStartDate) {
-		this.orderItemStartDate = orderItemStartDate;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
 
-	public boolean isOrderItemDelivery() {
-		return orderItemDelivery;
+	public int getDelivery() {
+		return delivery;
 	}
 
-	public void setOrderItemDelivery(boolean orderItemDelivery) {
-		this.orderItemDelivery = orderItemDelivery;
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
 	}
 
-	public boolean isOrderItemCool() {
-		return orderItemCool;
+	public int getCool() {
+		return cool;
 	}
 
-	public void setOrderItemCool(boolean orderItemCool) {
-		this.orderItemCool = orderItemCool;
+	public void setCool(int cool) {
+		this.cool = cool;
 	}
 
-	public boolean isOrderItemChop() {
-		return orderItemChop;
+	public int getCut() {
+		return cut;
 	}
 
-	public void setOrderItemChop(boolean orderItemChop) {
-		this.orderItemChop = orderItemChop;
+	public void setCut(int cut) {
+		this.cut = cut;
 	}
 
-	public int getOrderItemPackage() {
-		return orderItemPackage;
+	public int getId_package() {
+		return id_package;
 	}
 
-	public void setOrderItemPackage(int orderItemPackage) {
-		this.orderItemPackage = orderItemPackage;
+	public void setId_package(int id_package) {
+		this.id_package = id_package;
 	}
 
-	public String getOrderItemAdditionalNotes() {
-		return orderItemAdditionalNotes;
+	public String getAdditionalNotes() {
+		return additionalNotes;
 	}
 
-	public void setOrderItemAdditionalNotes(String orderItemAdditionalNotes) {
-		this.orderItemAdditionalNotes = orderItemAdditionalNotes;
+	public void setAdditionalNotes(String additionalNotes) {
+		this.additionalNotes = additionalNotes;
 	}
 
 	public String getDeliveryTime() {
@@ -114,6 +117,14 @@ public class OrderItems {
 
 	public void setDeliveryTime(String deliveryTime) {
 		this.deliveryTime = deliveryTime;
+	}
+
+	public int getId_order() {
+		return id_order;
+	}
+
+	public void setId_order(int id_order) {
+		this.id_order = id_order;
 	}
 
 }

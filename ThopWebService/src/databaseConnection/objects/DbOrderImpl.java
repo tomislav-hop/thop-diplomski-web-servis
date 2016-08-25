@@ -19,9 +19,18 @@ public class DbOrderImpl {
 			Statement stmt = conn.createStatement();
 			String sql = "INSERT INTO `order` VALUES (NULL, '" + order.getOrderOrdered() + "', '" + order.getOrderAdress() + "', '" + order.getOrderDate() + "', '" + order.getAdditionalNotes() + "', '" + order.getStatusId() + "');";
 			System.out.println("SQL: " + sql);
-			stmt.executeUpdate(sql);
-			System.out.println("Order successfully added.");
-			return "Order successfully added.";
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			int id = 0;
+			ResultSet rs = stmt.getGeneratedKeys();
+	        if (rs.next()){
+	            id =rs.getInt(1);
+	        }
+			
+			//sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'ordersdatabase' AND TABLE_NAME = 'order';";
+			//ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("Order successfully added with ID: " + id);
+			return Integer.toString(id);
 		} catch (SQLException ex) {
 			Logger.getLogger(DbOrderImpl.class.getName()).log(Level.SEVERE, null, ex);
 			return "Order add failed: " + ex.toString();

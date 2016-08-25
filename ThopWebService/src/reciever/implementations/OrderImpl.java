@@ -18,9 +18,9 @@ public class OrderImpl implements OrderInterface {
 		Order o = gson.fromJson(json, Order.class);
 		MySQLConnectionHelper mySQL = new MySQLConnectionHelper();
 		mySQL.connectToDatabase();
-		mySQL.addOrder(o);
+		String response = mySQL.addOrder(o);
 		mySQL.closeDatabaseConnection();
-		return "Recieved: " + json;
+		return response;
 	}
 
 	@Override

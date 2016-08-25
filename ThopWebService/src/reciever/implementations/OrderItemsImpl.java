@@ -1,5 +1,6 @@
 package reciever.implementations;
 
+import java.sql.Statement;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -14,18 +15,21 @@ import reciever.interfaces.OrderItemsInterface;
 public class OrderItemsImpl implements OrderItemsInterface {
 
 	@Override
-	public String addOrderItems(String json) {
+	public String addOrderItems(String json, String orderId) {
 		System.out.println("Recieved: " + json);
 		Gson gson = new GsonBuilder().create();
-		//Order o = gson.fromJson(json, Order.class);
-		//INSERT INTO stavke_narudzbe VALUES (NULL, '7', '2016-08-10 00:00:00', '45', '2016-08-10 00:00:00', '1', '1', '1', '6', 'sDSAFSFDsdfsdfsdfsfdfs', '2016-08-26 00:00:00');
-		//List<OrderItems> oi = gson.fromJson(json, List<OrderItems>.class);
 		OrderItems[] oi = gson.fromJson(json, OrderItems[].class);
-		
-		//JsonParser jsonParser = new JsonParser();
-		//JsonArray orderItemsArray = (JsonArray)jsonParser.parse(json);
-		
-		return null;
+
+		for (OrderItems orderItem : oi) {
+			String sql = "INSERT INTO orderItems VALUES (NULL, " + orderItem.getId_item() + ", " + orderItem.getDeadline() + ", " + orderItem.getWeight() + ", " + orderItem.getStartTime() + ", " + orderItem.getDelivery() + ", " + orderItem.getCool() + ", " + orderItem.getCut() + ", " + orderItem.getId_package() + ", " + orderItem.getAdditionalNotes() + ", " + orderItem.getDeliveryTime() + ", " + orderId + ");";
+			
+			
+			
+			
+			System.out.println("SQL: " + sql);
+		}
+
+		return "Test";
 	}
 
 	@Override
