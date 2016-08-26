@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import databaseConnection.objects.DbItemImpl;
 import databaseConnection.objects.DbOrderImpl;
+import databaseConnection.objects.DbOrderItemsImpl;
 import databaseConnection.objects.DbPackageImpl;
 import databaseConnection.objects.DbStatusImpl;
 import gsonObjects.Item;
@@ -129,5 +130,21 @@ public class MySQLConnectionHelper {
 
 	public List<gsonObjects.Order> getAllOrders() {
 		return new DbOrderImpl().getAllOrders(conn);
+	}
+
+	//================================================================================
+	// Order items methods
+	//================================================================================
+	
+	public String addOrderItems(gsonObjects.OrderItems[] orderItems, String orderId){
+		return new DbOrderItemsImpl().addOrderItems(orderItems, orderId, conn);
+	}
+	
+	public gsonObjects.OrderItems getOrderItem(String orderItemId){
+		return null;
+	}
+	
+	public List<gsonObjects.OrderItems> getAllOrderItemsForOrder(String orderId){
+		return null;
 	}
 }

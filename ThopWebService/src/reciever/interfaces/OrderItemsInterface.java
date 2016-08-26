@@ -13,7 +13,7 @@ public interface OrderItemsInterface {
 	@POST
 	@Path("add")
 	@Consumes("application/json")
-	public String addOrderItems(String json, String orderId);
+	public String addOrderItems(String json,@QueryParam("orderId") String orderId);
 
 	@GET
 	@Path("get")
