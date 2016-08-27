@@ -14,6 +14,7 @@ import databaseConnection.objects.DbOrderImpl;
 import databaseConnection.objects.DbOrderItemsImpl;
 import databaseConnection.objects.DbPackageImpl;
 import databaseConnection.objects.DbStatusImpl;
+import databaseConnection.objects.DbUserImpl;
 import gsonObjects.Item;
 import gsonObjects.Status;
 
@@ -147,4 +148,13 @@ public class MySQLConnectionHelper {
 	public List<gsonObjects.OrderItems> getAllOrderItemsForOrder(String orderId) {
 		return new DbOrderItemsImpl().getAllItemsFromOrder(conn, orderId);
 	}
+	
+	//================================================================================
+	// Login
+	//================================================================================
+	
+	public String login(String username, String password){
+		return new DbUserImpl().login(username, password, conn);
+	}
+	
 }
