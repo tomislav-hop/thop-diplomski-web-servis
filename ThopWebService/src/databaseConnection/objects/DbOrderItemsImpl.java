@@ -16,7 +16,7 @@ public class DbOrderItemsImpl {
 			Statement stmt = conn.createStatement();
 
 			for (OrderItems orderItem : orderItems) {
-				String sql = "INSERT INTO orderItems VALUES (NULL, " + orderItem.getId_item() + ", '" + orderItem.getDeadline() + "', " + orderItem.getWeight() + ", '" + orderItem.getStartTime() + "', " + orderItem.getDelivery() + ", " + orderItem.getCool() + ", " + orderItem.getCut() + ", " + orderItem.getId_package() + ", '" + orderItem.getAdditionalNotes() + "', '" + orderItem.getDeliveryTime() + "', " + orderId + ");";
+				String sql = "INSERT INTO orderItems VALUES (NULL, " + orderItem.getId_item() + ", '" + orderItem.getDeadline() + "', " + orderItem.getWeight() + ", '" + orderItem.getStartTime() + "', " + orderItem.getDelivery() + ", " + orderItem.getCool() + ", " + orderItem.getCut() + ", " + orderItem.getId_package() + ", '" + orderItem.getAdditionalNotes() + "', '" + orderItem.getDeliveryTime() + "', " + orderId + ", " + orderItem.getAmount() + ");";
 				System.out.println("SQL: " + sql);
 				stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			}
