@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import gsonObjects.OrderItems;
-import gsonObjects.Status;
 
 public class DbOrderItemsImpl {
 

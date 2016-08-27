@@ -17,19 +17,14 @@ public class DbOrderImpl {
 
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "INSERT INTO `order` VALUES (NULL, '" + order.getOrderOrdered() + "', '" + order.getOrderAdress() + "', '" + order.getOrderDate() + "', '" + order.getAdditionalNotes() + "', '" + order.getStatusId() + "');";
+			String sql = "INSERT INTO `order` VALUES (NULL, '" + order.getOrderOrdered() + "', '" + order.getOrderAdress() + "', '" + order.getOrderDate() + "', '" + order.getAdditionalNotes() + "', '" + order.getStatusId() + "', " + order.getUser_id() + ");";
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-
 			int id = 0;
 			ResultSet rs = stmt.getGeneratedKeys();
 			if (rs.next()) {
 				id = rs.getInt(1);
 			}
-
-			// sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE
-			// TABLE_SCHEMA = 'ordersdatabase' AND TABLE_NAME = 'order';";
-			// ResultSet rs = stmt.executeQuery(sql);
 			System.out.println("Order successfully added with ID: " + id);
 			return Integer.toString(id);
 		} catch (SQLException ex) {
@@ -46,7 +41,7 @@ public class DbOrderImpl {
 			ResultSet rs = stmt.executeQuery(sql);
 			Order returnOrder = null;
 			while (rs.next()) {
-				return returnOrder = new Order(rs.getInt("id_order"), rs.getString("orderedBy"), rs.getString("adress"), rs.getString("orderDate"), rs.getString("additionalNotes"), rs.getInt("id_status"));
+				return returnOrder = new Order(rs.getInt("id_order"), rs.getString("orderedBy"), rs.getString("adress"), rs.getString("orderDate"), rs.getString("additionalNotes"), rs.getInt("id_status"), rs.getInt("user_id"));
 			}
 			return returnOrder;
 		} catch (SQLException e) {
@@ -63,7 +58,7 @@ public class DbOrderImpl {
 			ResultSet rs = stmt.executeQuery(sql);
 			List<Order> listOfOrders = new ArrayList<>();
 			while (rs.next()) {
-				listOfOrders.add(new Order(rs.getInt("id_order"), rs.getString("orderedBy"), rs.getString("adress"), rs.getString("orderDate"), rs.getString("additionalNotes"), rs.getInt("id_status")));
+				listOfOrders.add(new Order(rs.getInt("id_order"), rs.getString("orderedBy"), rs.getString("adress"), rs.getString("orderDate"), rs.getString("additionalNotes"), rs.getInt("id_status"), rs.getInt("user_id")));
 			}
 			return listOfOrders;
 		} catch (SQLException e) {

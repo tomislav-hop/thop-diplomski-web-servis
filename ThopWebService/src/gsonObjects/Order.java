@@ -8,8 +8,9 @@ public class Order {
 	private String orderDate;
 	private String additionalNotes;
 	private int statusId;
+	private int user_id;
 
-	public Order(int orderId, String orderOrdered, String orderAdress, String orderDate, String additionalNotes, int statusId) {
+	public Order(int orderId, String orderOrdered, String orderAdress, String orderDate, String additionalNotes, int statusId, int user_id) {
 		super();
 		this.orderId = orderId;
 		this.orderOrdered = orderOrdered;
@@ -17,6 +18,15 @@ public class Order {
 		this.orderDate = orderDate;
 		this.additionalNotes = additionalNotes;
 		this.statusId = statusId;
+		this.user_id = user_id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public int getOrderId() {

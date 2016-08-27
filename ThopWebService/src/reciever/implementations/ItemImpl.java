@@ -5,43 +5,30 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import databaseConnection.MySQLConnectionHelper;
 import gsonObjects.Item;
 import reciever.interfaces.ItemInterface;
+import start.Start;
 
 public class ItemImpl implements ItemInterface {
 
 	@Override
 	public String addItem(String json) {
-		System.out.println("Recieved: " + json);
-
 		Gson gson = new GsonBuilder().create();
 		Item i = gson.fromJson(json, Item.class);
-
-		MySQLConnectionHelper mySQL = new MySQLConnectionHelper();
-		mySQL.connectToDatabase();
-		mySQL.addItem(i);
-		mySQL.closeDatabaseConnection();
-
+		Start.mySQLConnectionHelper.addItem(i);
 		return "Recieved: " + json;
 	}
 
 	@Override
 	public String getItem(String itemId) {
-		MySQLConnectionHelper mySQL = new MySQLConnectionHelper();
-		mySQL.connectToDatabase();
-		Item item = mySQL.getItem(itemId);
+		Item item = Start.mySQLConnectionHelper.getItem(itemId);
 		String returnJson = new Gson().toJson(item);
-		mySQL.closeDatabaseConnection();
 		return returnJson;
 	}
 
 	@Override
 	public String getAllItems() {
-		MySQLConnectionHelper mySQL = new MySQLConnectionHelper();
-		mySQL.connectToDatabase();
-		List<Item> listOfItems = mySQL.getAllItems();
-		mySQL.closeDatabaseConnection();
+		List<Item> listOfItems = Start.mySQLConnectionHelper.getAllItems();
 		String returnJson = new Gson().toJson(listOfItems);
 		return returnJson;
 	}

@@ -17,6 +17,7 @@ import databaseConnection.objects.DbStatusImpl;
 import databaseConnection.objects.DbUserImpl;
 import gsonObjects.Item;
 import gsonObjects.Status;
+import start.Start;
 
 public class MySQLConnectionHelper {
 
@@ -28,7 +29,7 @@ public class MySQLConnectionHelper {
 	private String user;
 	private String pass;
 
-	private Connection conn = null;
+	public static Connection conn = null;
 
 	//================================================================================
 	// Database configuration and connections
@@ -55,10 +56,8 @@ public class MySQLConnectionHelper {
 	public void connectToDatabase() {
 		try {
 			Class.forName(JDBC_DRIVER);
-			System.out.println("Connecting to: " + FULL_CONNECTION_URL);
-			System.out.println("User data: " + user + "\t" + pass);
+			System.out.println("\n" + Start.limiter + "\nConnecting to: " + FULL_CONNECTION_URL + "\nUser data: " + user + "\t" + pass + "\nConnection successuful.\n" + Start.limiter);
 			conn = DriverManager.getConnection(FULL_CONNECTION_URL, user, pass);
-			System.out.println("Connection successuful.");
 		} catch (ClassNotFoundException | SQLException ex) {
 			Logger.getLogger(MySQLConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);
 		}
