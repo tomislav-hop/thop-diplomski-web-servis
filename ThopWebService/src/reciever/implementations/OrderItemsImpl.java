@@ -1,9 +1,12 @@
 package reciever.implementations;
 
+import java.util.List;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import databaseConnection.MySQLConnectionHelper;
+import gsonObjects.Order;
 import gsonObjects.OrderItems;
 import reciever.interfaces.OrderItemsInterface;
 
@@ -22,15 +25,23 @@ public class OrderItemsImpl implements OrderItemsInterface {
     }
 
     @Override
-    public String getOrderItem(String OrderItemId) {
-	// TODO Auto-generated method stub
-	return null;
+    public String getOrderItem(String orderItemId) {
+    	MySQLConnectionHelper mySQL = new MySQLConnectionHelper();
+		mySQL.connectToDatabase();
+		OrderItems oi = mySQL.getOrderItem(orderItemId);
+		String returnJson = new Gson().toJson(oi);
+		mySQL.closeDatabaseConnection();
+		return returnJson;
     }
 
     @Override
     public String getAllOrderItems(String orderId) {
-	// TODO Auto-generated method stub
-	return null;
+	MySQLConnectionHelper mySQL = new MySQLConnectionHelper();
+	mySQL.connectToDatabase();
+	List<OrderItems> oi = mySQL.getAllOrderItemsForOrder(orderId);
+	String returnJson = new Gson().toJson(oi);
+	mySQL.closeDatabaseConnection();
+	return returnJson;
     }
 
 }

@@ -135,16 +135,16 @@ public class MySQLConnectionHelper {
 	//================================================================================
 	// Order items methods
 	//================================================================================
-	
-	public String addOrderItems(gsonObjects.OrderItems[] orderItems, String orderId){
+
+	public String addOrderItems(gsonObjects.OrderItems[] orderItems, String orderId) {
 		return new DbOrderItemsImpl().addOrderItems(orderItems, orderId, conn);
 	}
-	
-	public gsonObjects.OrderItems getOrderItem(String orderItemId){
-		return null;
+
+	public gsonObjects.OrderItems getOrderItem(String orderItemId) {
+		return new DbOrderItemsImpl().getOrderItem(orderItemId, conn);
 	}
-	
-	public List<gsonObjects.OrderItems> getAllOrderItemsForOrder(String orderId){
-		return null;
+
+	public List<gsonObjects.OrderItems> getAllOrderItemsForOrder(String orderId) {
+		return new DbOrderItemsImpl().getAllItemsFromOrder(conn, orderId);
 	}
 }
