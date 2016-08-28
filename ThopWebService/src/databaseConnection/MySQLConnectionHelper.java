@@ -36,7 +36,6 @@ public class MySQLConnectionHelper {
 	//================================================================================
 	private void loadWebServiceProperties() {
 		Properties prop = new Properties();
-
 		try {
 			prop.load(new FileInputStream(PROP_FILE_NAME));
 			db_url = prop.getProperty("db_url");
@@ -48,11 +47,17 @@ public class MySQLConnectionHelper {
 		}
 	}
 
+	//================================================================================
+	// Database connection constructor
+	//================================================================================
 	public MySQLConnectionHelper() {
 		loadWebServiceProperties();
 		FULL_CONNECTION_URL = db_url + db_name;
 	}
 
+	//================================================================================
+	// Database connect
+	//================================================================================
 	public void connectToDatabase() {
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -63,6 +68,9 @@ public class MySQLConnectionHelper {
 		}
 	}
 
+	//================================================================================
+	// Database disconnect methods
+	//================================================================================
 	public void closeDatabaseConnection() {
 		try {
 			conn.close();
@@ -147,13 +155,13 @@ public class MySQLConnectionHelper {
 	public List<gsonObjects.OrderItems> getAllOrderItemsForOrder(String orderId) {
 		return new DbOrderItemsImpl().getAllItemsFromOrder(conn, orderId);
 	}
-	
+
 	//================================================================================
 	// Login
 	//================================================================================
-	
-	public String login(String username, String password){
+
+	public String login(String username, String password) {
 		return new DbUserImpl().login(username, password, conn);
 	}
-	
+
 }
