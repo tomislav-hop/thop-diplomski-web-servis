@@ -19,8 +19,11 @@ public class DbUserImpl {
 				System.out.println("No user");
 				return "Fail";
 			} else {
-				System.out.println("User exist");
-				return "Ok";
+				System.out.println("User exists");
+				while (rs.next()) {
+					return rs.getString("id_user");
+				}
+				return "Fail";
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(DbUserImpl.class.getName()).log(Level.SEVERE, null, ex);
