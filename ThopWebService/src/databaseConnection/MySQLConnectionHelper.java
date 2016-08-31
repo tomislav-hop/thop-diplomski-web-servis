@@ -136,8 +136,8 @@ public class MySQLConnectionHelper {
 		return new DbOrderImpl().getOrder(orderId, conn);
 	}
 
-	public List<gsonObjects.Order> getAllOrders() {
-		return new DbOrderImpl().getAllOrders(conn);
+	public List<gsonObjects.Order> getAllOrders(String userId) {
+		return new DbOrderImpl().getAllOrders(userId, conn);
 	}
 
 	//================================================================================

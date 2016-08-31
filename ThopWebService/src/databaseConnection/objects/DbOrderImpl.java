@@ -50,10 +50,10 @@ public class DbOrderImpl {
 		}
 	}
 
-	public List<Order> getAllOrders(Connection conn) {
+	public List<Order> getAllOrders(String userId, Connection conn) {
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM `order`;";
+			String sql = "SELECT * FROM `order` WHERE user_id = " + userId + ";";
 			System.out.println("SQL: " + sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			List<Order> listOfOrders = new ArrayList<>();

@@ -27,8 +27,8 @@ public class OrderImpl implements OrderInterface {
 	}
 
 	@Override
-	public String getAllOrders() {
-		List<Order> listOfOrderss = Start.mySQLConnectionHelper.getAllOrders();
+	public String getAllOrders(String userId) {
+		List<Order> listOfOrderss = Start.mySQLConnectionHelper.getAllOrders(userId);
 		String returnJson = new Gson().toJson(listOfOrderss);
 		return returnJson;
 	}

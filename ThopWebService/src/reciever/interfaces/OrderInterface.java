@@ -24,6 +24,6 @@ public interface OrderInterface {
 	@GET
 	@Path("getAll")
 	@Produces("application/json")
-	public String getAllOrders();
+	public String getAllOrders(@QueryParam("userId") String userId);
 
 }
