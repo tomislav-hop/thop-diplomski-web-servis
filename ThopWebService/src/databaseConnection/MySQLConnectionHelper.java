@@ -94,6 +94,10 @@ public class MySQLConnectionHelper {
 	public Item getItem(String itemId) {
 		return new DbItemImpl().getItem(itemId, conn);
 	}
+	
+	public double getGetBakeTime(String itemId){
+		return new DbItemImpl().getBakeTime(itemId, conn);
+	}
 
 	//================================================================================
 	// Status methods

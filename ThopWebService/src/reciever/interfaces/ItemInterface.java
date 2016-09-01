@@ -25,4 +25,9 @@ public interface ItemInterface {
 	@Path("getAll")
 	@Produces("application/json")
 	public String getAllItems();
+	
+	@GET
+	@Path("bake")
+	@Produces("application/json")
+	public String getBakeTime(@QueryParam("kg") String kg, @QueryParam("itemId") String itemId);
 }

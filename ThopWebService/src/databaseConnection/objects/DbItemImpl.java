@@ -48,6 +48,7 @@ public class DbItemImpl {
 		try {
 			Statement stmt = conn.createStatement();
 			String sql = "SELECT * FROM item WHERE id_item = " + itemId + ";";
+			System.out.println("SQL: " + sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			Item returnItem = null;
 			while (rs.next()) {
@@ -57,6 +58,23 @@ public class DbItemImpl {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public double getBakeTime(String itemId, Connection conn) {
+		try {
+			Statement stmt = conn.createStatement();
+			String sql = "SELECT * FROM item WHERE id_item = " + itemId + ";";
+			System.out.println("SQL: " + sql);
+			ResultSet rs = stmt.executeQuery(sql);
+			Double returnBakeTime = null;
+			while (rs.next()) {
+				returnBakeTime = rs.getDouble("timePerKg");
+			}
+			return returnBakeTime;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
 		}
 	}
 }
