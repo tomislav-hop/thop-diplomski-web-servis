@@ -1,8 +1,6 @@
 package start;
 
 import javax.servlet.*;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 
 public class StartupServletContextListener implements ServletContextListener {
 	Start s;

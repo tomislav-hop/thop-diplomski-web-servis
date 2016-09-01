@@ -38,7 +38,7 @@ public class ItemImpl implements ItemInterface {
 		double bakeTime = Start.mySQLConnectionHelper.getGetBakeTime(itemId);
 		if (bakeTime != -1) {
 			double fullBakeTime = bakeTime * Integer.parseInt(kg);
-			return String.valueOf(fullBakeTime) + "minutes";
+			return String.valueOf(fullBakeTime) + " minutes";
 		} else {
 			return "Error during calculation";
 		}
