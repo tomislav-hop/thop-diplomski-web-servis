@@ -36,9 +36,23 @@ public class ItemImpl implements ItemInterface {
 	@Override
 	public String getBakeTime(String kg, String itemId) {
 		double bakeTime = Start.mySQLConnectionHelper.getGetBakeTime(itemId);
+		String bakeTimeString = "";
 		if (bakeTime != -1) {
-			double fullBakeTime = bakeTime * Integer.parseInt(kg);
-			return String.valueOf(fullBakeTime) + " minutes";
+			Integer kilograms = Integer.parseInt(kg);
+			if(kilograms<=18){
+				bakeTimeString = "180";
+			}else if(kilograms>18 && kilograms<=25){
+				bakeTimeString = "210";
+			}else if(kilograms>25 && kilograms<=35){
+				bakeTimeString = "240";
+			}else if(kilograms>35 && kilograms <=45){
+				bakeTimeString = "260";
+			}else if(kilograms>45){
+				bakeTimeString = "300";
+			}
+			
+			//double fullBakeTime = bakeTime * Integer.parseInt(kg);
+			return bakeTimeString + " minutes";
 		} else {
 			return "Error during calculation";
 		}
